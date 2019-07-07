@@ -1,20 +1,26 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const HeaderStyled = styled.div`
+  position: ${props=>props.isScrollOver? 'fixed' : 'relative'};
+  width: 100%;
+  background: #fff;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 15px 0;
+  padding: ${props=>props.isScrollOver? '0' : '15px 0'};
   font-family: 'Open Sans', '微軟正黑體', 'sans-serif';
-  border-bottom: 1px #eee solid;
+  border-bottom: ${props=>props.isScrollOver? '0px' : '1px #eee solid'};
+  box-shadow: ${props=>props.isScrollOver? '0px 2px 5px 0px rgba(0,0,0,0.2)' : '0'};
 `;
 
 const Title = styled.div`
-  font-size: 1.5em;
-  margin: 20px 20px 20px 60px;
+  font-size: ${props=>props.isScrollOver? '1.1em' : '1.5em'};
+  margin: ${props=>props.isScrollOver? '5px 5px 5px 60px' : '20px 20px 20px 60px'};
+  transition: font-size 0.2s ease-in-out 0s; 
   letter-spacing: 0.15em;
   font-weight: 500px;
 `;
@@ -29,22 +35,33 @@ const OptionLi = styled.li`
   padding: 0 7px;
 `;
 
-const Header = () => {
+const Empty = styled.div`
+  height: 95px;
+  width: 100%;
+`;
+
+const Header = ({
+  isScrollOver
+}) => {
   return (
-    <HeaderStyled>
-      <Title>Cathy P</Title>
-      <OptionBar>
-        <OptionLi>
-          <Link to="/blog">首頁</Link>
-        </OptionLi>
-        <OptionLi>分類</OptionLi>
-        <OptionLi>列表</OptionLi>
-      </OptionBar>
-    </HeaderStyled>
+    <React.Fragment>
+      <HeaderStyled isScrollOver={isScrollOver}>
+        <Title isScrollOver={isScrollOver}>Cathy P</Title>
+        <OptionBar>
+          <OptionLi>
+            <Link to="/blog">首頁</Link>
+          </OptionLi>
+          <OptionLi>分類</OptionLi>
+          <OptionLi>列表</OptionLi>
+        </OptionBar>
+      </HeaderStyled>
+      {isScrollOver? <Empty/>:null}
+    </React.Fragment>
   );
 };
 
 Header.propTypes = {
+  isScrollOver: PropTypes.bool.isRequired,
 };
 
 export default Header;

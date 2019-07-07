@@ -6,12 +6,34 @@ class HeaderContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
+      isScrollOver: false
+    }
+    this.handleScroll = this.handleScroll.bind(this)
+  }
+
+  componentDidMount(){
+      window.addEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll(){
+    if(document.documentElement.scrollTop<60 && this.state.isScrollOver){
+      this.setState({
+        isScrollOver: false
+      })
+    }
+    else if(document.documentElement.scrollTop>=60 && !this.state.isScrollOver){
+      this.setState({
+        isScrollOver: true
+      })
     }
   }
 
   render() {
     return (
-      <Header/>);
+      <Header
+        isScrollOver={this.state.isScrollOver}
+      />
+    );
   }
 }
 

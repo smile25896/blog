@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const RightMenuStyled = styled.div`
   width: 280px;
-  /* min-width: 250px; */
+  min-width: 250px;
   padding: 10px;
 `;
 
