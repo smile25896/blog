@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Inconsolata|Muli");
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -5,6 +7,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+*{
+	font-family: 'Muli', '微軟正黑體', sans-serif;
 }
 
 code {
@@ -40,6 +46,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
+	overflow: scroll;
 	line-height: 1;
 }
 ol, ul {
@@ -56,4 +63,8 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+a, a:hover, a:focus, a:active {
+	text-decoration: none;
+	color: inherit;
 }

@@ -38,24 +38,27 @@ const Content = styled.div`
 
 const Ul = styled.ul`
   margin: 1em 0;
+
+  li{
+    line-height: 2em;
+  }
 `;
 
 const RightMenu = ({
   postList,
 }) => {
-  let recentPosts = postList.slice(postList.length-6, postList.length-1)
+  let recentPosts = postList.slice().reverse().slice(0, 10);
   recentPosts = recentPosts.map(post=>(
     <li key={post.id}>{post.title}</li>
   ))
-  console.log(recentPosts)
   return (
     <RightMenuStyled>
       <Block>
         <Title>ABOUT ME</Title>
         <Content>
           <SecondTitle>Cathy Peng</SecondTitle>
-          現職前端工程師<br/>
-          喜歡設計、喜歡程式，希望自己能保持這樣的熱情一直學習下去！<br/>
+          {/* 現職前端工程師<br/>
+          喜歡設計、喜歡程式，希望自己能保持這樣的熱情一直學習下去！<br/> */}
         </Content>
       </Block>
       <Block>

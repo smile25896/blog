@@ -1,6 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const HeaderStyled = styled.div`
   display: flex;
@@ -33,7 +34,9 @@ const Header = () => {
     <HeaderStyled>
       <Title>Cathy P</Title>
       <OptionBar>
-        <OptionLi>首頁</OptionLi>
+        <OptionLi>
+          <Link to="/blog">首頁</Link>
+        </OptionLi>
         <OptionLi>分類</OptionLi>
         <OptionLi>列表</OptionLi>
       </OptionBar>

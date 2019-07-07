@@ -8,7 +8,7 @@ class RightMenuContainer extends Component {
     super(props);
     this.state = {
     }
-    this.postList = postList;
+    this.postList = postList.slice();
   }
 
   render() {

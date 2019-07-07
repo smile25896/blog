@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
 
-export const Post = styled.div`
-  max-width: 630px;
-  margin: 0 auto;
+export const PostContentStyled = styled.div`
+  /* max-width: 630px;
+  margin: 0 auto; */
   margin-top: 0;
-  padding: 20px;
   border-radius: 3px;
   line-height: 1.8em;
   padding-bottom: 100px;
@@ -83,7 +82,7 @@ export const Post = styled.div`
   }
 `;
 
-export const PostText = styled(Post)`
+export const PostTextStyled = styled(PostContentStyled)`
   width: 100%;
   max-width: 100%;
   padding: 0;

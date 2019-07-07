@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { 
-  Post,
-  PostText,
+  PostContentStyled,
+  PostTextStyled,
 } from 'components/Style/Post'
 import hljs from 'highlight.js';
+import { Link } from 'react-router-dom';
 
 const HomeStyled = styled.div`
   flex: 1;
@@ -14,11 +15,17 @@ const HomeStyled = styled.div`
 `;
 
 const PostPreview = styled.div`
-  /* max-width: 850px; */
-  margin: 0px 10px 30px 40px;
-  padding: 20px 20px;
-  /* border-bottom: 2px #eee solid; */
+  position: relative;
+  margin: 10px 10px 30px 40px;
+  padding: 10px 20px 35px;
+  border-radius: 3px;
+  overflow: hidden;
   box-shadow: 0px 10px 5px 0px rgba(240,240,240,0.8);
+  transition: box-shadow 0.3s ease-in-out 0s; 
+
+  &:hover{
+    box-shadow: 0px 10px 5px 0px rgba(225,225,225,0.8);
+  }
 
   img{
     max-width: 500px;
@@ -26,15 +33,11 @@ const PostPreview = styled.div`
   }
 `;
 
-const Title = styled.h1`
+const Title = styled(Link)`
+  display: inline-block;
   font-size: 1.7rem;
-  padding: 0.2em 0;
-`;
-
-const Intro = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  padding: 10px 0;
+  letter-spacing: 0.1em;
 `;
 
 const DateTime = styled.div`
@@ -43,25 +46,50 @@ const DateTime = styled.div`
   font-size: 0.8em;
 `;
 
-const Tag = styled.span`
-  background: #8dc2c2;
-  padding: 3px 5px;
-  border-radius: 3px;
-  font-size: 0.7em;
-  color: #fff;
+const TagUl = styled.ul`
+  margin-bottom: 0.5em;
+`;
+
+const Tag = styled.li`
+  display: inline-block;
+  border: 1px solid #8dc2c2;
+  padding: 5px 5px;
+  border-radius: 2px;
+  font-size: 0.75em;
+  color: #61a3a3;
   margin: 0 2px;
 `;
 
-const Text = styled.div`
-  padding: 0.5em 0;
-  line-height: 1.5rem;
-  color: #535353;
+const ContinueRead = styled(Link)`
+  /* position: absolute;
+  bottom: 20px;
+  right: 20px;
+  border: 0px;
+  background: #fff;
+  color: #61a3a3; */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border: 0px;
+  padding: 8px;
+  font-size: 0.8em;
+  background: #fff;
+  color: #61a3a3;
+  transition: 0.3s ease-in-out 0s; 
+  letter-spacing: 0.1em;
+  text-align: center;
+
+  &:hover{
+    background: #8dc2c2;
+    color: #fff;
+  }
 `;
 
 const Home = ({
   postList
 }) => {
-  let postItems = postList.map(post=>{
+  let postItems = postList.slice().reverse().map(post=>{
     let html = post.text;
     const testHtml = document.createElement('body')
     testHtml.innerHTML = html
@@ -74,14 +102,12 @@ const Home = ({
     ))
     return (
       <PostPreview key={post.id}>
-        <Title>{post.title}</Title>
-        <Intro>
-          <DateTime>{post.datetime}</DateTime>
-          <div>{tagItems}</div>
-        </Intro>
+        <TagUl>{tagItems}</TagUl>
+        <Title to={`/blog/post/${post.id}`}>{post.title}</Title>
+        <DateTime>{post.datetime}</DateTime>
         <img src='/image/01.png'></img>
-        <PostText dangerouslySetInnerHTML={{__html: testHtml.innerHTML}}/>
-        {/* <Text>{post.text}</Text> */}
+        <PostTextStyled dangerouslySetInnerHTML={{__html: testHtml.innerHTML}}/>
+        <ContinueRead to={`/blog/post/${post.id}`}>CONTINUE READING...</ContinueRead>
       </PostPreview>
     )
   })
