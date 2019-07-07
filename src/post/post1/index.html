@@ -1,0 +1,67 @@
+<h1>JavaScript30：第一天筆記</h1>
+
+<img src="/post/01/01.png">
+
+<h2 class="primary">實現目標</h2>
+<p>
+	寫出鍵盤打擊樂。當敲擊鍵盤由A至L的位置時，頁面上的按鈕會變亮，且會發出聲音。
+</p>
+<h2 class="primary">詳細步驟：</h2>
+<blockquote>
+	<ol>
+		<li>1.  聆聽鍵盤按下去的事件</li>
+		<li>2.  判斷按下去的按鍵，並對相應的div和audio做處理</li>
+		<li>3.  鍵盤放開後，要回復原狀</li>
+	</ol>
+</blockquote>
+
+<h3>
+	1.  聆聽鍵盤按下去(keydown)的事件
+</h3>
+<ul class="circle">
+	<li>提示： <span class="highLight">HTML5 Event</span> </li>
+</ul>
+<p class="small">
+	當鍵盤按下時，執行 <span class='highLight'>function playSound()</span> ，並將event裡的 <span class="highLight">keyCode</span> (會記錄按下鍵的碼)
+</p>
+<pre><code data-lang="javascript">window.addEventListener("keydown", function(e){
+	playSound(e.keyCode);
+})</code></pre>
+
+<h3>
+	2.  判斷按下去的按鍵，並對相應的div和audio做處理
+</h3>
+<ul class="circle">
+	<li>提示：透過 <span class='highLight'>querySelector()</span> 去選擇 <span class='highLight'>data-key</span> 的屬性 </li>
+</ul>
+<p class="small">
+	<span class='highLight'>function playSound()</span> ：先選取到相對應 key 的 div 和 audio <br>
+	css選擇規則中：屬性是用 [ ] 來選取，例如：div[data-key="1"] <br>
+	如果沒有對應的 audio ，則回傳，不繼續執行。 <br>
+	將選到的 div 的 class 加上 playing <br>
+	並播放audio，為了讓每次按下去都同重頭播放音效，在播放設定 <span class='highLight'>currentTime = 0;</span>
+</p>
+<pre><code data-lang="js">function playSound(keyCode){
+  const key = document.querySelector(`div[data-key="${keyCode}"]`);
+  const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+  if (!audio) return;
+
+  key.classList.add('playing');
+  audio.currentTime = 0;
+  audio.play();
+}</code></pre>
+
+<h3>
+	3.  鍵盤放開後，要回復原狀
+</h3>
+<p class="small">
+	當transition動畫跑完時，從class中移除playing
+</p>
+<pre><code data-lang="js">const keys = document.querySelectorAll('.key');
+for(let key of keys){
+  key.addEventListener("transitionend", removeClass);
+}
+
+function removeClass(){
+  this.classList.remove('playing');
+}</code></pre>
