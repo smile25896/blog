@@ -16,12 +16,12 @@ class HeaderContainer extends Component {
   }
 
   handleScroll(){
-    if(document.documentElement.scrollTop<60 && this.state.isScrollOver){
+    if(document.documentElement.scrollTop<68 && this.state.isScrollOver){
       this.setState({
         isScrollOver: false
       })
     }
-    else if(document.documentElement.scrollTop>=60 && !this.state.isScrollOver){
+    else if(document.documentElement.scrollTop>=68 && !this.state.isScrollOver){
       this.setState({
         isScrollOver: true
       })

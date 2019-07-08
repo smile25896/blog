@@ -105,7 +105,7 @@ const Home = ({
         <TagUl>{tagItems}</TagUl>
         <Title to={`/blog/post/${post.id}`}>{post.title}</Title>
         <DateTime>{post.datetime}</DateTime>
-        <img src='/image/01.png'></img>
+        {post.img? <img src={post.img}></img> : null}
         <PostTextStyled dangerouslySetInnerHTML={{__html: testHtml.innerHTML}}/>
         <ContinueRead to={`/blog/post/${post.id}`}>CONTINUE READING...</ContinueRead>
       </PostPreview>

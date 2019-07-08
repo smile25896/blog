@@ -11,7 +11,7 @@ export const PostContentStyled = styled.div`
   font-family: 'Muli', '微軟正黑體', sans-serif;
 
   img{
-    width: 100%;
+    max-width: 100%;
   }
 
   p{
@@ -56,7 +56,7 @@ export const PostContentStyled = styled.div`
 
   code{
     background: #f3f3f3;
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Inconsolata', monospace, '微軟正黑體', 'sans-serif';
     display: inline-block;
     padding: 1.5em;
     width: 100%;
