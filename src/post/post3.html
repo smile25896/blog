@@ -1,0 +1,223 @@
+<img src="/image/03.png" style="max-width: 450px"/>
+<h2 class="primary">實現目標</h2>
+<h3>點menu icon後，橫線會旋轉成X。</h3>
+<iframe height="500" style="width: 100%;" scrolling="no" title="100DaysCss #02 #plus" src="//codepen.io/smile25896/embed/PrJzEr/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/smile25896/pen/PrJzEr/'>100DaysCss #02 #plus</a> by Cathy
+  (<a href='https://codepen.io/smile25896'>@smile25896</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+<h2 class="primary">詳細步驟：</h2>
+<blockquote>
+  <ol>
+    <li>1.  畫出動畫開頭三條線的MENU</li>
+    <li>2.  透過transform製造位移，畫出動畫中三條線合併的MENU。</li>
+    <li>3.  透過transform製造旋轉效果，畫出動畫結尾X形狀的MENU。</li>
+    <li>4.  製作動畫，從三條線變成X。</li>
+  </ol>
+</blockquote>
+
+<h2>
+  1. 畫出三條線的MENU
+</h2>
+Day2.html
+<pre class='small'><code class="html">&lt;div class=&quot;frame&quot;&gt;
+&lt;div class=&quot;center&quot;&gt;
+    &lt;div class=&quot;line line1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;line line2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;line line3&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+Day2.scss
+<pre><code class="scss">$menu-icon-line-height: 8px;
+$menu-icon-line-width: 80px;
+.line{
+  background: #fff;
+  width: $menu-icon-line-width;
+  height: $menu-icon-line-height;
+  border-radius: 3px;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,0.3);
+  margin: 15px 0;
+}</code></pre>
+
+<h2>
+  2.  畫出三條線合併的MENU。
+</h2>
+<p class='small'>
+  透過<span class="highLight">transform: translate(x軸, y軸)</span>，將第一條和第三條線位移到第二條線的位置。
+</p>
+<div class='tip' name="transform: translate()">
+  <h3 class="primary">位移功能：transform: translate(x軸, y軸)</h3>
+  <img src='/image/03-2.png' style="max-width: 350px"/>
+  <pre class="small2"><code class='css'>a{ transform: translate(0, 100px); }
+b{ transform: translate(100px, 0); }</code></pre>
+</div>
+
+Day2.scss
+<pre><code class="scss">.line1{
+  transform: translate(0, 23px);
+}
+.line2{
+  /* 第二條線不需要位移 */
+}
+.line3{
+  transform: translate(0, -23px);
+}</code></pre>
+
+<h2>
+3.  畫出X形狀的MENU。
+</h2>
+<p class='small'>
+透過<span class="highLight">transform: rotate(θ)</span>，將第一條和第三條線旋轉成X的角度，第二條線則隱藏。
+</p>
+Day2.scss
+<pre><code class="scss">.line1{
+  transform: translate(0, 23px) rotate(45deg);
+}
+.line2{
+  /* 第二條線消失 */
+  opacity: 0;
+}
+.line3{
+  transform: translate(0, -23px) rotate(135deg);
+}</code></pre>
+
+<h2>
+3.  將上述動作串成動畫。
+</h2>
+
+<h3>CSS動畫</h3>
+<p class="small">
+  透過<span class="highLight">keyframes</span>搭配<span class="highLight">animation-</span>製作CSS動畫效果。
+</p>
+<div class='tip' name='keyframes'>
+  <pre class='small'><code class='css'>/* keyframes 範例 */
+@keyframes 動畫名稱{
+  關鍵影格{ css.... }
+  關鍵影格{ css.... }
+}</code></pre>
+  
+    <p class="small">
+      <span class='bold'>關鍵影格：</span><br/>
+      1. 百分比數(%)<br/>
+      2. from和to ：相當於0%和100%
+    </p>
+    <pre class='small'><code class='css'>/* 背景顏色從白變成黃再變成紅 */
+@keyframes changeColor{
+  0%{ background: #fff; }
+  50%{ background: yellow; }
+  100%{ background: red; }
+}
+/* 背景顏色從白直接變成紅 */
+@keyframes changeColor2{
+  from{ background: #fff; }
+  to{ background: red; }
+}</code></pre>
+</div>
+
+
+<div class='tip' name='animation'>
+<p class="small">
+  設定要套用什麼動畫，以及套用的細節。
+</p>
+<pre class='small'><code class='css'>/* animation範例 */
+div{
+  animation: 動畫名稱 動畫持續時間 動畫加速函式 動畫播放前後模式
+}</code></pre>
+<div>
+  <p class="small">
+    <span class="bold">動畫名稱</span><br/>
+    關鍵影格動畫的名稱
+  </p>
+  <p class="small">
+    <span class="bold">動畫持續時間</span><br/>
+    動畫播放的總時長，預設為0。(單位：秒(s)或毫秒(ms))
+  </p>
+  <p class="small">
+    <span class="bold">動畫加速函式</span><br/>
+    linear: 線性，沒有加速減速。<br/>
+    ease、ease-in、ease-out、ease-in-out: 漸入漸出的加速效果。<br/>
+    cubic-bezier(n,n,n,n): 貝茲曲線
+  </p>
+  <p class="small">
+    <span class="bold">動畫播放前後模式</span><br/>
+    none: 預設，動畫結束後返回原始狀態。<br/>
+    backwards: 動畫結束後停留在最後一個影格狀態。
+  </p>
+  <p class="small2">
+    除了上述提到的，animation還有很多可以設定的內容，本篇只用到這幾個。之後可能會在出一篇文對animation做詳細介紹。
+  </p>
+</div>
+</div>
+
+<p class="small">
+  將三條線分別製作關鍵影格動畫。<br/>
+  0%的關鍵影格：三條線平行<br/>
+  50%的關鍵影格：三條線合併<br/>
+  100%的關鍵影格：X型
+</p>
+Day2.scss
+<pre><code class='scss'>@keyframes animate-line-1 {
+  0% {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, 23px) rotate(0);
+  }
+  100% {
+    transform: translate(0, 23px) rotate(315deg);
+  }
+}
+
+@keyframes animate-line-2 {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    /* 除了調整透明度，還利用transform: scale(0)線條漸小的效果。 */
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes animate-line-3 {
+  0% {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, -23px) rotate(0);
+  }
+  100% {
+    transform: translate(0, -23px) rotate(225deg);
+  }
+}</code></pre>
+
+<p class="small">
+  接著透過js設定<span class="highLight">onclick</span>，點擊後幫線條(.line)套上class active，再點一下則拿掉class active。<br/>
+</p>
+<pre><code class='js'>document.querySelector('.center').addEventListener('click', toggleMenu)
+function toggleMenu(){
+  document.querySelectorAll('.line').forEach(item=>{
+    item.classList.toggle('active')
+  })
+}</code></pre>
+
+<p class="small">
+  接著將class active套用由"≡"轉換到"X"的關鍵影格動畫。
+</p>
+<pre><code class='scss'>$cubic-bezier-in: cubic-bezier(0.30,1,0.70,1);
+$cubic-bezier-out: cubic-bezier(1,0.70,1,0.30);
+.line1.active{
+  animation: animate-line-1 .7s $cubic-bezier-in forwards;
+}
+.line2.active{
+  animation: animate-line-2 .7s $cubic-bezier-in forwards;
+}
+.line3{
+  animation: animate-line-3-out .7s ease-in-out;
+}
+</code></pre>
+
+<p class="small">
+  用相同的方法製作倒過來的關鍵影格動畫，即可完成這次的題目！
+</p>

@@ -7,6 +7,7 @@ import {
 import hljs from 'highlight.js';
 
 const PostStyled = styled.div`
+  width: 0;
   flex: 1;
   margin: 10px 10px 30px 40px;
   padding: 10px 20px;
@@ -42,7 +43,6 @@ const DateTime = styled.div`
 `;
 
 const Post = ({
-  postList,
   post,
 }) => {
   let html = post.html;
@@ -55,16 +55,6 @@ const Post = ({
   let tagItems = post.tags.map(tag=>(
     <Tag key={tag}>{tag}</Tag>
   ))
-  // return (
-  //   <Post key={post.id}>
-  //     {/* <TagUl>{tagItems}</TagUl> */}
-  //     {/* <Title to={`/blog/post/${post.id}`}>{post.title}</Title> */}
-  //     {/* <DateTime>{post.datetime}</DateTime> */}
-  //     {/* <img src='/image/01.png'></img> */}
-  //     <PostText dangerouslySetInnerHTML={{__html: testHtml.innerHTML}}/>
-  //     {/* <Text>{post.text}</Text> */}
-  //   </Post>
-  // )
   return (
     <PostStyled>
       <TagUl>

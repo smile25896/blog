@@ -23,6 +23,31 @@ export const PostContentStyled = styled.div`
     border-left: 5px #a9d6d6 solid;
     padding-left: 20px;
   }
+  .tip{
+    position: relative;
+    border: 3px #c7d9d9 solid;
+    border-radius: 3px;
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom: 2em;
+
+    &:before{
+      box-sizing: border-box;
+      content: attr(name);
+      display: block;
+      position: absolute;
+      /* width: 60px; */
+      height: 33px;
+      top: -33px;
+      left: -3px;
+      background: #c7d9d9;
+      /* color:#61a3a3; */
+      /* font-weight: 600; */
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      padding: 2px 10px;
+    }
+  }
   .highLight{
     color: #ef5d40;
   }
@@ -79,6 +104,22 @@ export const PostContentStyled = styled.div`
 
   .small{
     margin-bottom: 0.8em;
+  }
+
+  .small2{
+    margin-bottom: 0;
+  }
+
+  .bold{
+    font-weight: 700;
+  }
+
+  table{
+    border: 1px solid #aaa;
+    td{
+      border: 1px solid #aaa;
+      padding: 10px;
+    }
   }
 `;
 
