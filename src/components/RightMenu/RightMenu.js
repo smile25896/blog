@@ -1,6 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const RightMenuStyled = styled.div`
   width: 280px;
@@ -49,7 +50,11 @@ const RightMenu = ({
 }) => {
   let recentPosts = postList.slice().reverse().slice(0, 10);
   recentPosts = recentPosts.map(post=>(
-    <li key={post.id}>{post.title}</li>
+    <li key={post.id}>
+      <Link to={`/blog/post/${post.id}`}>
+        {post.title}
+      </Link>
+    </li>
   ))
   return (
     <RightMenuStyled>
