@@ -8,7 +8,7 @@ import history from './history'
 import { Router } from 'react-router-dom';
 
 ReactDOM.render((
-  <Router history={history}>
+  <Router history={history} basename={process.env.PUBLIC_URL }>
     <App />
   </Router>
 ), document.getElementById('root'));
