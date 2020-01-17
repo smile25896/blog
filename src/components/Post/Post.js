@@ -5,6 +5,9 @@ import {
   PostContentStyled,
 } from 'components/Style/Post'
 import hljs from 'highlight.js';
+import ReactMarkdown from "react-markdown";
+import marked from 'marked';
+// import test from '../../post/test.md'
 
 const PostStyled = styled.div`
   width: 0;
@@ -44,14 +47,8 @@ const DateTime = styled.div`
 
 const Post = ({
   post,
+  md,
 }) => {
-  let html = post.html;
-  const testHtml = document.createElement('body')
-  testHtml.innerHTML = html
-  let codes = testHtml.querySelectorAll('code')
-  codes.forEach(code=>{
-    hljs.highlightBlock(code)
-  })
   let tagItems = post.tags.map(tag=>(
     <Tag key={tag}>{tag}</Tag>
   ))
@@ -62,14 +59,19 @@ const Post = ({
       </TagUl>
       <Title>{post.title}</Title>
       <DateTime>{post.datetime}</DateTime>
-      <PostContentStyled key={post.id} dangerouslySetInnerHTML={{__html: testHtml.innerHTML}}/>
+      {/* <ReactMarkdown source={md} /> */}
+      <PostContentStyled
+        id="content"
+        className="article-detail"
+        dangerouslySetInnerHTML={{__html: md? marked(md): ''}}
+      />
     </PostStyled>
   );
 };
 
 Post.propTypes = {
-  postList: PropTypes.array.isRequired,
   post: PropTypes.object.isRequired,
+  md: PropTypes.string,
 };
 
 export default Post;

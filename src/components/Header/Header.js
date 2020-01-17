@@ -46,7 +46,11 @@ const Header = ({
   return (
     <React.Fragment>
       <HeaderStyled isScrollOver={isScrollOver}>
-        <Title isScrollOver={isScrollOver}>Cathy P</Title>
+        <Title isScrollOver={isScrollOver}>
+          <Link to="/blog" >
+            Cathy P
+          </Link>
+        </Title>
         <OptionBar>
           <OptionLi>
             <Link to="/blog">首頁</Link>

@@ -10,12 +10,29 @@ export const PostContentStyled = styled.div`
   padding-bottom: 100px;
   font-family: 'Muli', '微軟正黑體', sans-serif;
 
+  strong{
+    font-weight: bold;
+    background-color: #cae8e8;
+  }
+
   img{
     max-width: 100%;
   }
 
-  p{
-    margin-bottom: 2em;
+  p, ol{
+    margin-bottom: 1.2em;
+  }
+
+  ol{
+    list-style-type: decimal;
+  }
+
+  ul{
+    list-style-type: circle;
+  }
+
+  ol, ul{
+    padding-left: 1.2em;
   }
 
   blockquote{
@@ -48,7 +65,7 @@ export const PostContentStyled = styled.div`
       padding: 2px 10px;
     }
   }
-  .highLight{
+  .highlight{
     color: #ef5d40;
   }
 
@@ -64,15 +81,20 @@ export const PostContentStyled = styled.div`
     font-size: 1.3em;
     margin-top: 15px;
     margin-bottom: 15px;
-    font-weight: 500;
+    font-weight: 600;
     color: #61a3a3;
+    /* color: #367575; */
   }
 
   h3{
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: 600;
     margin-bottom: 0.2em;
     color: #333;
+  }
+
+  h4{
+    font-weight: 600;
   }
 
   pre{
@@ -127,6 +149,7 @@ export const PostTextStyled = styled(PostContentStyled)`
   width: 100%;
   max-width: 100%;
   padding: 0;
+
   h2{
     margin: 0.3em 0;
   }

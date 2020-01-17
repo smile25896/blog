@@ -6,6 +6,7 @@ import {
 } from 'components/Style/Post'
 import hljs from 'highlight.js';
 import { Link } from 'react-router-dom';
+import marked from 'marked';
 
 const HomeStyled = styled.div`
   flex: 1;
@@ -86,16 +87,10 @@ const ContinueRead = styled(Link)`
 `;
 
 const Home = ({
-  postList
+  postList,
+  md
 }) => {
-  let postItems = postList.slice().reverse().map(post=>{
-    let html = post.text;
-    const testHtml = document.createElement('body')
-    testHtml.innerHTML = html
-    let codes = testHtml.querySelectorAll('code')
-    codes.forEach(code=>{
-      hljs.highlightBlock(code)
-    })
+  let postItems = postList.slice().map((post,index)=>{
     let tagItems = post.tags.map(tag=>(
       <Tag key={tag}>{tag}</Tag>
     ))
@@ -105,11 +100,15 @@ const Home = ({
         <Title to={`/blog/post/${post.id}`}>{post.title}</Title>
         <DateTime>{post.datetime}</DateTime>
         {post.img? <img src={post.img} alt='post img'></img> : null}
-        <PostTextStyled dangerouslySetInnerHTML={{__html: testHtml.innerHTML}}/>
+        <PostTextStyled
+          id="content"
+          className="article-detail"
+          dangerouslySetInnerHTML={{__html: md[index]? marked(md[index]): ''}}
+        />
         <ContinueRead to={`/blog/post/${post.id}`}>CONTINUE READING...</ContinueRead>
       </PostPreview>
     )
-  })
+  }).reverse()
   return (
     <HomeStyled classNameName='container'>
       {postItems}
@@ -119,6 +118,7 @@ const Home = ({
 
 Home.propTypes = {
   postList: PropTypes.array.isRequired,
+  md: PropTypes.array.isRequired,
 };
 
 export default Home;

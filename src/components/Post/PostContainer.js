@@ -6,17 +6,34 @@ import postList from 'post/list.json'
 class PostContainer extends Component {
   constructor(props){
     super(props);
-    this.state = {
-    }
     this.postList = postList.slice();
+    let post = this.postList.find(item=>item.id === this.props.match.params.postId)
+    this.state = {
+      post,
+    }
+    this.getPostMarkdown = this.getPostMarkdown.bind(this)
+  }
+
+  componentDidMount() {
+    this.getPostMarkdown()
+  }
+
+  async getPostMarkdown(){
+    const postId = this.props.match.params.postId
+    const file = await import(`../../post/${postId}.md`);
+    const response = await fetch(file.default);
+    const text = await response.text();
+
+    this.setState({
+        md: text,
+    })
   }
 
   render() {
-    let post = this.postList.find(item=>item.id === this.props.match.params.postId)
     return (
       <Post
-        postList={this.postList}
-        post={post}
+        post={this.state.post}
+        md={this.state.md}
       />);
   }
 }
