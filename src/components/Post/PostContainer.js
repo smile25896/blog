@@ -10,12 +10,25 @@ class PostContainer extends Component {
     let post = this.postList.find(item=>item.id === this.props.match.params.postId)
     this.state = {
       post,
+      urlKey: this.props.location.key
     }
     this.getPostMarkdown = this.getPostMarkdown.bind(this)
   }
 
   componentDidMount() {
     this.getPostMarkdown()
+  }
+
+  componentDidUpdate(){
+    let urlKey = this.props.location.key
+    if(urlKey !== this.state.urlKey){
+      let post = this.postList.find(item=>item.id === this.props.match.params.postId)
+      this.setState({
+        post,
+        urlKey,
+      })
+      this.getPostMarkdown()
+    }
   }
 
   async getPostMarkdown(){
@@ -39,7 +52,7 @@ class PostContainer extends Component {
 }
 
 PostContainer.propTypes = {
-    match: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
 };
 
 export default PostContainer;
