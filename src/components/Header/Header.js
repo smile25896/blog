@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const HeaderStyled = styled.div`
+
   position: ${props=>props.isScrollOver? 'fixed' : 'relative'};
   width: 100%;
   background: #fff;
@@ -23,6 +24,10 @@ const Title = styled.div`
   transition: font-size 0.2s ease-in-out 0s; 
   letter-spacing: 0.15em;
   font-weight: 500px;
+  
+  @media only screen and (max-width: 768px) {
+    margin-left: 30px;
+  }
 `;
 
 const OptionBar = styled.ul`

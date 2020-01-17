@@ -15,6 +15,10 @@ const HomeStyled = styled.div`
 `;
 
 const PostPreview = styled.div`
+  @media only screen and (max-width: 768px) {
+    margin-left: 10px;
+  }
+
   position: relative;
   margin: 10px 10px 30px 40px;
   padding: 10px 20px 35px;

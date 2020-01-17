@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const RightMenuStyled = styled.div`
+  @media only screen and (max-width: 768px) {
+    margin-left: 10px;
+  }
+
   width: 280px;
   min-width: 250px;
   padding: 10px;

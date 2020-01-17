@@ -10,7 +10,11 @@ import marked from 'marked';
 // import test from '../../post/test.md'
 
 const PostStyled = styled.div`
-  width: 0;
+  @media only screen and (max-width: 768px) {
+    margin-left: 10px;
+  }
+
+  /* width: 0; */
   flex: 1;
   margin: 10px 10px 30px 40px;
   padding: 10px 20px;
@@ -23,6 +27,7 @@ const Title = styled.h1`
   margin-bottom: 20px;
   font-weight: 500;
   letter-spacing: 0.1em;
+  line-height: 1.3em;
 `;
 
 const TagUl = styled.ul`
