@@ -114,30 +114,20 @@ export const PostContentStyled = styled.div`
     opacity: 0.6;
   }
 
-  .circle{
-    padding-left: 1.5em;
-    li:before{
-      content: "";
-      display: block;
-      width: 0.4em;
-      height: 0.4em;
-      position: absolute;
-      transform: translateY(0.7em) translateX(-1em);
-      background-color: #61a3a3;
-      border-radius: 50%;
-    }
+  p+.chat{
+    margin-top: -1em;
+  }
+
+  .chat{
+    background-color: #eee;
+    padding: 0.6em;
+    margin-right: 2em;
+    border-radius: 6px;
+    font-size: 0.8em;
   }
 
   .small{
-    margin-bottom: 0.8em;
-  }
-
-  .small2{
-    margin-bottom: 0;
-  }
-
-  .bold{
-    font-weight: 700;
+    font-size: 0.8em;
   }
 
   table{
@@ -159,11 +149,13 @@ export const PostTextStyled = styled(PostContentStyled)`
   }
 
   h2{
+    font-size: 1.1em;
     margin-bottom: 0.3em;
     margin-top: 0.8em;
   }
   h3{
-    font-size: 1em;
+    font-size: 0.9em;
+    font-weight: normal;
   }
   p{
     margin-bottom: 0.5em;
