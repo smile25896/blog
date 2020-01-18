@@ -110,6 +110,10 @@ export const PostContentStyled = styled.div`
     border-radius: 8px;
   }
 
+  a:hover{
+    opacity: 0.6;
+  }
+
   .circle{
     padding-left: 1.5em;
     li:before{
