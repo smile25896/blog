@@ -18,11 +18,13 @@ class PostListContainer extends Component {
 
   componentDidMount(){
     this.getPostList()
+    window.scrollTo(0,0)
   }
 
   componentDidUpdate(){
     let urlKey = this.props.location.key
     if(urlKey !== this.state.urlKey){
+      window.scrollTo(0,0)
       this.setState({
         urlKey,
       })

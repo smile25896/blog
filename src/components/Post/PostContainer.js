@@ -16,12 +16,14 @@ class PostContainer extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0,0)
     this.getPostMarkdown()
   }
 
   componentDidUpdate(){
     let urlKey = this.props.location.key
     if(urlKey !== this.state.urlKey){
+      window.scrollTo(0,0)
       let post = this.postList.find(item=>item.id === this.props.match.params.postId)
       this.setState({
         post,
