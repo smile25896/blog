@@ -17,6 +17,7 @@ const PostListStyled = styled.div`
 const PostPreview = styled.div`
   @media only screen and (max-width: 768px) {
     margin-left: 10px;
+    padding: 10px 10px 35px;
   }
 
   /* min-height: 340px; */

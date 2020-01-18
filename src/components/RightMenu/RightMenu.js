@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 
 const RightMenuStyled = styled.div`
   @media only screen and (max-width: 768px) {
-    margin-left: 10px;
+    margin-left: 0px;
+    width: auto;
   }
 
   width: 280px;
