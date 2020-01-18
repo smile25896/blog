@@ -38,7 +38,7 @@ const SecondTitle = styled.div`
 `;
 
 const Content = styled.div`
-  line-height: 1.5em;
+  line-height: 1.618em;
 `;
 
 const Ul = styled.ul`

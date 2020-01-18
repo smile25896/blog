@@ -42,7 +42,7 @@ const Title = styled(Link)`
   font-size: 1.7rem;
   padding: 10px 0;
   letter-spacing: 0.1em;
-  line-height: 1.3em;
+  line-height: 1.618em;
 `;
 
 const DateTime = styled.div`

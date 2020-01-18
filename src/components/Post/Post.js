@@ -27,7 +27,7 @@ const Title = styled.h1`
   margin-bottom: 20px;
   font-weight: 500;
   letter-spacing: 0.1em;
-  line-height: 1.3em;
+  line-height: 1.618em;
 `;
 
 const TagUl = styled.ul`

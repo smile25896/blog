@@ -6,7 +6,7 @@ export const PostContentStyled = styled.div`
   margin: 0 auto; */
   margin-top: 0;
   border-radius: 3px;
-  line-height: 1.8em;
+  line-height: 1.618em;
   padding-bottom: 100px;
   font-family: 'Muli', '微軟正黑體', sans-serif;
 
@@ -150,8 +150,13 @@ export const PostTextStyled = styled(PostContentStyled)`
   max-width: 100%;
   padding: 0;
 
+  & h2:first-child{
+    margin-top: 0.3em;
+  }
+
   h2{
-    margin: 0.3em 0;
+    margin-bottom: 0.3em;
+    margin-top: 0.8em;
   }
   h3{
     font-size: 1em;
