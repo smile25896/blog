@@ -50,7 +50,7 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
-
+  cursor: pointer;
 `;
 
 const ToggleSpan = styled.span`
@@ -82,17 +82,15 @@ const RightMenu = ({
     if(category.children.length>0){
       childItems = category.children.map(child=>(
       <li key={child.id}>
-        <Link to={`/blog/categrory/${child.id}`}>{child.name}</Link>
+        <Link to={`/blog/category/${child.id}`}>{child.name}</Link>
       </li>))
     }
     return(
-      <Li key={category.id}>
-        <ToggleSpan onClick={()=>{toggleOpen(category.id)}}>
+      <Li key={category.id} onClick={()=>{toggleOpen(category.id)}}>
+        <ToggleSpan>
           {isOpens[category.id]===false && childItems.length>0? "+": "-"}
         </ToggleSpan>
-        <Link to={`/blog/categrory/${category.id}`}>
           {category.name}
-        </Link>
         {childItems.length>0 && (
           <ChildUl isOpen={isOpens[category.id]}>{childItems}</ChildUl>
         )}

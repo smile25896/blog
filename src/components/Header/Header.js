@@ -56,13 +56,13 @@ const Header = ({
             Cathy P
           </Link>
         </Title>
-        <OptionBar>
+        {/* <OptionBar>
           <OptionLi>
             <Link to="/blog">首頁</Link>
           </OptionLi>
           <OptionLi>分類</OptionLi>
           <OptionLi>列表</OptionLi>
-        </OptionBar>
+        </OptionBar> */}
       </HeaderStyled>
       {isScrollOver? <Empty/>:null}
     </React.Fragment>

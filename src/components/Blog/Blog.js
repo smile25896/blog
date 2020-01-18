@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { 
   Header, 
-  Home, 
+  PostList, 
   RightMenu,
   Post,
 } from 'components'
@@ -25,9 +25,10 @@ const Blog = () => {
     <BlogStyled>
       <Header/>
       <Main>
-        <Route path="/blog" component={Home} exact/>
+        <Route path="/blog" component={PostList} exact/>
+        <Route path="/blog/category/:categoryId" component={PostList} exact/>
         <Route path="/blog/post/:postId" component={Post} exact/>
-        {/* <Home/> */}
+        {/* <PostList/> */}
         <RightMenu/>
       </Main>
     </BlogStyled>

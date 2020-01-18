@@ -8,7 +8,7 @@ import hljs from 'highlight.js';
 import { Link } from 'react-router-dom';
 import marked from 'marked';
 
-const HomeStyled = styled.div`
+const PostListStyled = styled.div`
   flex: 1;
   /* display: flex;
   flex-wrap: wrap; */
@@ -19,6 +19,7 @@ const PostPreview = styled.div`
     margin-left: 10px;
   }
 
+  /* min-height: 340px; */
   position: relative;
   margin: 10px 10px 30px 40px;
   padding: 10px 20px 35px;
@@ -92,7 +93,7 @@ const ContinueRead = styled(Link)`
   }
 `;
 
-const Home = ({
+const PostList = ({
   postList,
   md
 }) => {
@@ -116,15 +117,15 @@ const Home = ({
     )
   }).reverse()
   return (
-    <HomeStyled classNameName='container'>
+    <PostListStyled classNameName='container'>
       {postItems}
-    </HomeStyled>
+    </PostListStyled>
   );
 };;
 
-Home.propTypes = {
+PostList.propTypes = {
   postList: PropTypes.array.isRequired,
   md: PropTypes.array.isRequired,
 };
 
-export default Home;
+export default PostList;
