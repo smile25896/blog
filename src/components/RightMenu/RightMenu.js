@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -49,8 +49,25 @@ const Ul = styled.ul`
   }
 `;
 
+const Li = styled.li`
+
+`;
+
+const ToggleSpan = styled.span`
+  cursor: pointer;
+  padding: 0 3px;
+`;
+
+const ChildUl = styled.ul`
+  display: ${props=>props.isOpen? 'block': 'none'};
+  margin-left: 1em;
+`;
+
 const RightMenu = ({
+  isOpens,
   postList,
+  categories,
+  toggleOpen,
 }) => {
   let recentPosts = postList.slice().reverse().slice(0, 10);
   recentPosts = recentPosts.map(post=>(
@@ -60,20 +77,60 @@ const RightMenu = ({
       </Link>
     </li>
   ))
+  let categoriesItems = categories.map(category=>{
+    let childItems = []
+    if(category.children.length>0){
+      childItems = category.children.map(child=>(
+      <li key={child.id}>
+        <Link to={`/blog/categrory/${child.id}`}>{child.name}</Link>
+      </li>))
+    }
+    return(
+      <Li key={category.id}>
+        <ToggleSpan onClick={()=>{toggleOpen(category.id)}}>
+          {isOpens[category.id]===false && childItems.length>0? "+": "-"}
+        </ToggleSpan>
+        <Link to={`/blog/categrory/${category.id}`}>
+          {category.name}
+        </Link>
+        {childItems.length>0 && (
+          <ChildUl isOpen={isOpens[category.id]}>{childItems}</ChildUl>
+        )}
+      </Li>
+    )
+  })
   return (
     <RightMenuStyled>
       <Block>
         <Title>ABOUT ME</Title>
         <Content>
           <SecondTitle>Cathy Peng</SecondTitle>
-          {/* 現職前端工程師<br/>
-          喜歡設計、喜歡程式，希望自己能保持這樣的熱情一直學習下去！<br/> */}
+          現職前端工程師<br/>
+          喜歡設計、喜歡程式，希望自己能保持這樣的熱情一直學習下去！<br/>
+          另外也在自學韓文，也會寫一些我學習韓文的筆記<br/>
+          因為是自學的，內容僅供參考。
         </Content>
       </Block>
       <Block>
-        <Title>RECENT POSTS</Title>
+        <Title>最新文章</Title>
         <Ul>
           {recentPosts}
+        </Ul>
+      </Block>
+      <Block>
+        <Title>文章分類</Title>
+        <Ul>
+          {categoriesItems}
+          {/* <li>設計</li>
+          <li>
+            韓文筆記
+            <ChildUl>
+              <li>文法</li>
+              <li>
+                聽歌學韓文
+              </li>
+            </ChildUl>
+          </li> */}
         </Ul>
       </Block>
     </RightMenuStyled>
@@ -81,6 +138,10 @@ const RightMenu = ({
 };
 
 RightMenu.propTypes = {
+  isOpens: PropTypes.object.isRequired,
+  postList: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired,
+  toggleOpen: PropTypes.func.isRequired,
 };
 
 export default RightMenu;
