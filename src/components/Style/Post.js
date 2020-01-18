@@ -153,6 +153,9 @@ export const PostTextStyled = styled(PostContentStyled)`
   h2{
     margin: 0.3em 0;
   }
+  h3{
+    font-size: 1em;
+  }
   p{
     margin-bottom: 0.5em;
   }
