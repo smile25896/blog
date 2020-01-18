@@ -63,6 +63,7 @@ const Tag = styled.li`
   font-size: 0.75em;
   color: #61a3a3;
   margin: 0 2px;
+  cursor: pointer;
 `;
 
 const ContinueRead = styled(Link)`
