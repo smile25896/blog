@@ -70,7 +70,7 @@ const RightMenu = ({
   categories,
   toggleOpen,
 }) => {
-  let recentPosts = postList.slice().reverse().slice(0, 10);
+  let recentPosts = postList;
   recentPosts = recentPosts.map(post=>(
     <li key={post.id}>
       <Link to={`/blog/post/${post.id}`}>
