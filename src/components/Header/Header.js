@@ -18,9 +18,15 @@ const HeaderStyled = styled.div`
   box-shadow: ${props=>props.isScrollOver? '0px 2px 5px 0px rgba(0,0,0,0.2)' : '0'};
 `;
 
+const Content = styled.div`
+  width: 960px;
+  margin: 0 auto;
+`;
+
 const Title = styled.div`
   font-size: ${props=>props.isScrollOver? '1.1em' : '1.5em'};
   margin: ${props=>props.isScrollOver? '5px 5px 5px 60px' : '20px 20px 20px 60px'};
+  /* margin-left: calc(50% - 480px); */
   transition: font-size 0.2s ease-in-out 0s; 
   letter-spacing: 0.15em;
   font-weight: 500px;
@@ -51,18 +57,20 @@ const Header = ({
   return (
     <React.Fragment>
       <HeaderStyled isScrollOver={isScrollOver}>
-        <Title isScrollOver={isScrollOver}>
-          <Link to="/blog" >
-            Cathy P
-          </Link>
-        </Title>
-        {/* <OptionBar>
-          <OptionLi>
-            <Link to="/blog">首頁</Link>
-          </OptionLi>
-          <OptionLi>分類</OptionLi>
-          <OptionLi>列表</OptionLi>
-        </OptionBar> */}
+        <Content>
+          <Title isScrollOver={isScrollOver}>
+            <Link to="/blog" >
+              Cathy P
+            </Link>
+          </Title>
+          {/* <OptionBar>
+            <OptionLi>
+              <Link to="/blog">首頁</Link>
+            </OptionLi>
+            <OptionLi>分類</OptionLi>
+            <OptionLi>列表</OptionLi>
+          </OptionBar> */}
+        </Content>
       </HeaderStyled>
       {isScrollOver? <Empty/>:null}
     </React.Fragment>

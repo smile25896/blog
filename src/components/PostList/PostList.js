@@ -9,9 +9,6 @@ import { Link } from 'react-router-dom';
 import marked from 'marked';
 
 const PostListStyled = styled.div`
-  flex: 1;
-  /* display: flex;
-  flex-wrap: wrap; */
 `;
 
 const PostPreview = styled.div`
@@ -27,15 +24,21 @@ const PostPreview = styled.div`
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 0px 10px 5px 0px rgba(240,240,240,0.8);
-  transition: box-shadow 0.3s ease-in-out 0s; 
+  transition: box-shadow 0.3s ease-in-out 0s;
+  cursor: pointer;
 
   &:hover{
     box-shadow: 0px 10px 5px 0px rgba(225,225,225,0.8);
+
+    &:hover .continue{
+      background: #8dc2c2;
+      color: #fff;
+    }
   }
 
   img{
-    max-width: 500px;
-    max-height: 300px;
+    /* max-width: 500px; */
+    /* max-height: 300px; */
   }
 `;
 
@@ -87,11 +90,6 @@ const ContinueRead = styled(Link)`
   transition: 0.3s ease-in-out 0s; 
   letter-spacing: 0.1em;
   text-align: center;
-
-  &:hover{
-    background: #8dc2c2;
-    color: #fff;
-  }
 `;
 
 const PostList = ({
@@ -113,7 +111,7 @@ const PostList = ({
           className="article-detail"
           dangerouslySetInnerHTML={{__html: md[index]? marked(md[index]): ''}}
         />
-        <ContinueRead to={`/blog/post/${post.id}`}>CONTINUE READING...</ContinueRead>
+        <ContinueRead className='continue' to={`/blog/post/${post.id}`}>CONTINUE READING...</ContinueRead>
       </PostPreview>
     )
   }).reverse()

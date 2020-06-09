@@ -16,7 +16,6 @@ const PostStyled = styled.div`
   }
 
   /* width: 0; */
-  flex: 1;
   margin: 10px 10px 30px 40px;
   padding: 10px 20px;
   /* box-shadow: 0px 10px 5px 0px rgba(240,240,240,0.8); */
