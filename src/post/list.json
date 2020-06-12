@@ -75,5 +75,12 @@
 		"datetime": "2020.02.25",
 		"category": "4",
 		"tags": ["韓文", "單字"]
+	},
+	{
+		"id": "12",
+		"title": "[韓文歌詞]Super Junior K.R.Y - When We Were Us 푸르게 빛나던 우리의 계절",
+		"datetime": "2020.06.12",
+		"category": "3",
+		"tags": ["韓文", "歌詞"]
 	}
 ]
