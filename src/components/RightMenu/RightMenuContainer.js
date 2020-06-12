@@ -31,7 +31,7 @@ class RightMenuContainer extends Component {
     return (
       <RightMenu
         isOpens={this.state.isOpens}
-        postList={this.postList.reverse().slice(0, 10)}
+        postList={this.postList.slice().reverse().slice(0, 10)}
         categories={this.categories}
         toggleOpen={this.toggleOpen}
       />
