@@ -4,3 +4,4 @@ export { default as Header } from "./Header/HeaderContainer.js";
 export { default as PostList } from "./PostList/PostListContainer.js";
 export { default as RightMenu } from "./RightMenu/RightMenuContainer.js";
 export { default as Post } from "./Post/PostContainer.js";
+export { default as List } from "./List/ListContainer.js";

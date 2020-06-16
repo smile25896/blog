@@ -7,6 +7,7 @@ import {
   PostList, 
   RightMenu,
   Post,
+  List,
 } from 'components'
 
 const BlogStyled = styled.div`
@@ -33,6 +34,8 @@ const Blog = () => {
       <Main>
         <Content>
           <Route path="/blog" component={PostList} exact/>
+          {/* <Route path="/blog" component={PostList} exact/> */}
+          <Route path="/blog/list" component={List} exact/>
           <Route path="/blog/category/:categoryId" component={PostList} exact/>
           <Route path="/blog/post/:postId" component={Post} exact/>
           {/* <PostList/> */}

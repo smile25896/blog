@@ -19,6 +19,9 @@ const HeaderStyled = styled.div`
 `;
 
 const Content = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 960px;
   margin: 0 auto;
 `;
@@ -63,13 +66,15 @@ const Header = ({
               Cathy P
             </Link>
           </Title>
-          {/* <OptionBar>
+          <OptionBar>
             <OptionLi>
               <Link to="/blog">首頁</Link>
             </OptionLi>
-            <OptionLi>分類</OptionLi>
-            <OptionLi>列表</OptionLi>
-          </OptionBar> */}
+            {/* <OptionLi>分類</OptionLi> */}
+            <OptionLi>
+              <Link to="/blog/list">文章列表</Link>
+            </OptionLi>
+          </OptionBar>
         </Content>
       </HeaderStyled>
       {isScrollOver? <Empty/>:null}
