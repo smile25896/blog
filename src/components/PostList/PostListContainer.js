@@ -17,6 +17,7 @@ class PostListContainer extends Component {
   }
 
   componentDidMount(){
+    document.title = 'Cathy P'
     this.getPostList()
     window.scrollTo(0,0)
   }

@@ -8,6 +8,7 @@ class PostContainer extends Component {
     super(props);
     this.postList = postList.slice();
     let post = this.postList.find(item=>item.id === this.props.match.params.postId)
+    document.title = post.title
     this.state = {
       post,
       urlKey: this.props.location.key
@@ -30,6 +31,7 @@ class PostContainer extends Component {
         urlKey,
       })
       this.getPostMarkdown()
+      document.title = post.title
     }
   }
 

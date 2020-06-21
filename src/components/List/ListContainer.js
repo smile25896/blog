@@ -17,6 +17,7 @@ class ListContainer extends Component {
   }
 
   componentDidMount(){
+    document.title = '文章列表'
     this.getList()
     window.scrollTo(0,0)
   }
