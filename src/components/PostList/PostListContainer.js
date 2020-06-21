@@ -36,8 +36,12 @@ class PostListContainer extends Component {
   getPostList(){
     let postList;
     let categoryId = this.props.match.params.categoryId
+    let urltag = this.props.match.params.tag
     if(categoryId){
       postList = this.postList.filter(post=>post.category === categoryId)
+    }
+    else if(urltag){
+      postList = this.postList.filter(post=>post.tags.some(tag=>tag===urltag))
     }
     else{
       postList = this.postList

@@ -24,7 +24,7 @@ const PostPreview = styled.div`
   overflow: hidden;
   box-shadow: 0px 10px 5px 0px rgba(240,240,240,0.8);
   transition: box-shadow 0.3s ease-in-out 0s;
-  cursor: pointer;
+  /* cursor: pointer; */
 
   &:hover{
     box-shadow: 0px 10px 5px 0px rgba(225,225,225,0.8);
@@ -67,7 +67,6 @@ const Tag = styled.li`
   font-size: 0.75em;
   color: #61a3a3;
   margin: 0 2px;
-  cursor: pointer;
 `;
 
 const ContinueRead = styled(Link)`
@@ -97,7 +96,9 @@ const PostList = ({
 }) => {
   let postItems = postList.slice().map((post,index)=>{
     let tagItems = post.tags.map(tag=>(
-      <Tag key={tag}>{tag}</Tag>
+      <Tag key={tag}>
+        <Link to={`/blog/tag/${tag}`}>{tag}</Link>
+      </Tag>
     ))
     return (
       <PostPreview key={post.id}>

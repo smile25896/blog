@@ -37,6 +37,7 @@ const Blog = () => {
           {/* <Route path="/blog" component={PostList} exact/> */}
           <Route path="/blog/list" component={List} exact/>
           <Route path="/blog/category/:categoryId" component={PostList} exact/>
+          <Route path="/blog/tag/:tag" component={PostList} exact/>
           <Route path="/blog/post/:postId" component={Post} exact/>
           {/* <PostList/> */}
         </Content>

@@ -41,7 +41,6 @@ const Tag = styled.li`
   font-size: 0.75em;
   color: #61a3a3;
   margin: 0 2px;
-  cursor: pointer;
 `;
 
 const DateTime = styled.div`
@@ -66,7 +65,9 @@ const Post = ({
 }) => {
   let post = postList[postIndex]
   let tagItems = post.tags.map(tag=>(
-    <Tag key={tag}>{tag}</Tag>
+    <Tag key={tag}>
+      <Link to={`/blog/tag/${tag}`}>{tag}</Link>
+    </Tag>
   ))
   return (
     <PostStyled>
