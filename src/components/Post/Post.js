@@ -4,10 +4,9 @@ import styled from 'styled-components';
 import { 
   PostContentStyled,
 } from 'components/Style/Post'
-import hljs from 'highlight.js';
-import ReactMarkdown from "react-markdown";
 import marked from 'marked';
 // import test from '../../post/test.md'
+import { Link } from 'react-router-dom';
 
 const PostStyled = styled.div`
   @media only screen and (max-width: 768px) {
@@ -16,7 +15,7 @@ const PostStyled = styled.div`
   }
 
   /* width: 0; */
-  margin: 10px 10px 30px 40px;
+  margin: 10px 10px 60px 40px;
   padding: 10px 20px;
   /* box-shadow: 0px 10px 5px 0px rgba(240,240,240,0.8); */
 `;
@@ -51,10 +50,21 @@ const DateTime = styled.div`
   font-size: 1em;
 `;
 
+const PrevNextDiv = styled.div`
+  font-size: 0.8em;
+  line-height: 2em;
+
+  & a:hover{
+    opacity: 0.6
+  }
+`;
+
 const Post = ({
-  post,
+  postList,
+  postIndex,
   md,
 }) => {
+  let post = postList[postIndex]
   let tagItems = post.tags.map(tag=>(
     <Tag key={tag}>{tag}</Tag>
   ))
@@ -71,12 +81,25 @@ const Post = ({
         className="article-detail"
         dangerouslySetInnerHTML={{__html: md? marked(md): ''}}
       />
+      <PrevNextDiv>
+        {postIndex>0 && (
+          <div>
+            上一篇：<Link to={`/blog/post/${postList[postIndex-1].id}`}>{postList[postIndex-1].title}</Link>
+          </div>
+        )}
+        {postIndex+1<postList.length && (
+          <div>
+            下一篇：<Link to={`/blog/post/${postList[postIndex+1].id}`}>{postList[postIndex+1].title}</Link>
+          </div>
+        )}
+      </PrevNextDiv>
     </PostStyled>
   );
 };
 
 Post.propTypes = {
-  post: PropTypes.object.isRequired,
+  postList: PropTypes.array.isRequired,
+  postIndex: PropTypes.number.isRequired,
   md: PropTypes.string,
 };
 

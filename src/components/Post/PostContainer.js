@@ -7,10 +7,17 @@ class PostContainer extends Component {
   constructor(props){
     super(props);
     this.postList = postList.slice();
-    let post = this.postList.find(item=>item.id === this.props.match.params.postId)
-    document.title = post.title
+    let postIndex
+    this.postList.some((item, index)=>{
+      if(item.id === this.props.match.params.postId){
+        postIndex = index
+        return true
+      }
+      return false
+    })
+    document.title = this.postList[postIndex].title
     this.state = {
-      post,
+      postIndex,
       urlKey: this.props.location.key
     }
     this.getPostMarkdown = this.getPostMarkdown.bind(this)
@@ -25,13 +32,20 @@ class PostContainer extends Component {
     let urlKey = this.props.location.key
     if(urlKey !== this.state.urlKey){
       window.scrollTo(0,0)
-      let post = this.postList.find(item=>item.id === this.props.match.params.postId)
+      let postIndex
+      this.postList.some((item, index)=>{
+        if(item.id === this.props.match.params.postId){
+          postIndex = index
+          return true
+        }
+        return false
+      })
       this.setState({
-        post,
+        postIndex,
         urlKey,
       })
       this.getPostMarkdown()
-      document.title = post.title
+      document.title = this.postList[postIndex].title
     }
   }
 
@@ -49,7 +63,8 @@ class PostContainer extends Component {
   render() {
     return (
       <Post
-        post={this.state.post}
+        postList={this.postList}
+        postIndex={this.state.postIndex}
         md={this.state.md}
       />);
   }

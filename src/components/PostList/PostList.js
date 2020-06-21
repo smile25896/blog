@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import {
   PostTextStyled,
 } from 'components/Style/Post'
-import hljs from 'highlight.js';
 import { Link } from 'react-router-dom';
 import marked from 'marked';
 

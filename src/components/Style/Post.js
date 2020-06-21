@@ -7,7 +7,7 @@ export const PostContentStyled = styled.div`
   margin-top: 0;
   border-radius: 3px;
   line-height: 1.618em;
-  padding-bottom: 100px;
+  padding-bottom: 3em;
   font-family: 'Muli', '微軟正黑體', sans-serif;
 
   strong{

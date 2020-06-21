@@ -1,12 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {
-  PostTextStyled,
-} from 'components/Style/Post'
-import hljs from 'highlight.js';
 import { Link } from 'react-router-dom';
-import marked from 'marked';
 
 const ListStyled = styled.div`
   @media only screen and (max-width: 768px) {
@@ -78,27 +73,6 @@ const Tag = styled.li`
   color: #61a3a3;
   margin: 0 2px;
   cursor: pointer;
-`;
-
-const ContinueRead = styled(Link)`
-  /* position: absolute;
-  bottom: 20px;
-  right: 20px;
-  border: 0px;
-  background: #fff;
-  color: #61a3a3; */
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  border: 0px;
-  padding: 8px;
-  font-size: 0.8em;
-  background: #fff;
-  color: #61a3a3;
-  transition: 0.3s ease-in-out 0s; 
-  letter-spacing: 0.1em;
-  text-align: center;
 `;
 
 // const Line = styled.div`
